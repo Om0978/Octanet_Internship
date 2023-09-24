@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <div class="heading">To Do List</div>
+    <div class="box">
+    <div class="container">
+        <div id="newtask">
+            <input type="text" placeholder="Task to be done ...">
+            <button id="push">Add</button>
+        </div>
+        <div id="tasks"></div>
+    </div>
+    </div>
+    <Script type="text/javascript">
+        document.querySelector('#push').onclick=function(){
+            if(document.querySelector('#newtask input').value.length==0){
+                alert("please Enter a Task")
+            }
+            else{
+                document.querySelector('#tasks').innerHTML +=
+                `
+                <div class="task">
+                <span id="taskname">
+                ${document.querySelector('#newtask input').value}
+                </span>
+                <button class="delete">
+                    <i class="fa fa-trash-o" style="font-size:22px"></i>
+                    </button>
+                    </div>
+                `;
+                var current_tasks=document.querySelectorAll(".delete");
+                for(var i=0;i<current_tasks.length;i++){
+                    current_tasks[i].onclick = function(){
+                        this.parentNode.remove();
+                    }
+                }
+            }
+        }
+    </Script>
+</body>
+</html>
